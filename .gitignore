@@ -1,0 +1,16 @@
+client/node_modules
+client/.env
+client/.next
+server/node_modules
+server.env
+server/.env
+/ml/random-forest-js/node_modules
+assets/thesis/diagrams/.$system architecture.drawio.bkp
+assets/thesis/diagrams/.$diagramme de séquence.drawio.bkp
+assets/thesis/diagrams/.$component based.drawio.bkp
+assets/thesis/diagrams/.$crontab.drawio.bkp
+assets/thesis/diagrams/.$middleware.drawio.bkp
+assets/thesis/diagrams/.$ruleset diagram.drawio.bkp
+assets/thesis/diagrams/.$ruleset priority.drawio.bkp
+*.bkp
+.DS_Store

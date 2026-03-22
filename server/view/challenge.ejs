@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Challenge</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5; /* Light grey background */
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px; /* Space between elements */
+        }
+
+        .logo {
+            margin-bottom: 15px;
+        }
+
+        .logo img {
+            max-width: 150px; /* Adjust logo size as needed */
+            height: auto;
+            border-radius: 8px; /* Rounded corners for logo */
+        }
+
+        h1 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Styling for the Turnstile widget itself, though mostly handled by Cloudflare */
+        .cf-turnstile {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            transform: scale(1); /* Ensure it's not scaled down */
+            transform-origin: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+                margin: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+    <!-- Cloudflare Turnstile script -->
+    <!-- This script needs to be loaded from Cloudflare to enable the Turnstile widget. -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <!-- Replace 'https://placehold.co/150x50/000000/FFFFFF?text=Your+Logo' with your actual project logo URL -->
+            <img src="https://i.imgur.com/RA29550.png" alt="Project Logo">
+        </div>
+
+        <p>Please complete the CAPTCHA to prove you're not a robot.</p>
+        <!-- Cloudflare Turnstile Widget -->
+        <!-- IMPORTANT: Replace 'YOUR_SITE_KEY' with your actual Cloudflare Turnstile Site Key.
+             You can get this from your Cloudflare dashboard after setting up a Turnstile widget. -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABlHWSTwvvP0yiNr" data-callback="yourCallbackFunctionName"></div>
+
+        <!-- You can add a hidden form field here to send the Turnstile token to your server -->
+        <!-- <form id="captcha-form" action="/verify-captcha" method="POST">
+            <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
+            <button type="submit" style="display:none;">Verify</button>
+        </form> -->
+
+        <!-- Optional: A JavaScript function to handle the Turnstile callback -->
+        <script>
+            // This function will be called by Turnstile when the challenge is successfully completed.
+            function yourCallbackFunctionName(token) {
+                console.log('Turnstile token:', token);
+                // You would typically send this token to your server for verification.
+                // Example: If you have a form, you might populate a hidden input and submit it.
+                // document.getElementById('cf-turnstile-response').value = token;
+                // document.getElementById('captcha-form').submit();
+            }
+        </script>
+    </div>
+</body>
+</html>
